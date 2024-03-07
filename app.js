@@ -49,7 +49,7 @@ function checkWinner() {
 
     if (posOne != "" && posTwo != "" && posThree != "") {
       if (posOne === posTwo && posTwo === posThree) {
-        console.log("winner");
+        addColor();
         showWinner(posThree);
       }
     }
@@ -57,10 +57,10 @@ function checkWinner() {
 }
 
 let resetGame = () => {
-  console.log("work");
   turnO = true;
   enableBtn();
   msgNew.classList.add("hide");
+  removeColor();
 };
 
 let disableBtn = () => {
@@ -73,6 +73,18 @@ let enableBtn = () => {
   for (let box of allBox) {
     box.disabled = false;
     box.innerText = "";
+  }
+};
+
+let addColor = () => {
+  allBox[match[0]].setAttribute("style", "background-color:#333333");
+  allBox[match[1]].setAttribute("style", "background-color:#333333");
+  allBox[match[2]].setAttribute("style", "background-color:#333333");
+};
+
+let removeColor = () => {
+  for (let i = 0; i < allBox.length; i++) {
+    allBox[i].style.backgroundColor = "";
   }
 };
 
